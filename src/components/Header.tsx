@@ -18,19 +18,24 @@ export const Header: React.FC = () => {
           animate={{ opacity: 1, x: 0 }}
           className="flex items-center gap-2"
         >
-          <span className="font-serif text-2xl font-bold tracking-widest text-gold">ISLAND<span className="text-[var(--text-primary)]">ELITE</span></span>
+          <img 
+            src="/logo.png" 
+            alt="Coco Moris Logo" 
+            className="h-12 w-auto object-contain"
+            referrerPolicy="no-referrer"
+          />
         </motion.div>
 
         {/* Desktop Nav */}
         <nav className="hidden items-center gap-12 md:flex">
-          {['Fleet', 'Services', 'Activities', 'Concierge', 'Contact'].map((item) => (
+          {['Services', 'Activities', 'HorseRiding', 'CarRental', 'Concierge', 'Contact'].map((item) => (
             <motion.a
               key={item}
-              href={`#${item.toLowerCase()}`}
+              href={`#${item.replace(/([A-Z])/g, '-$1').toLowerCase().replace(/^-/, '')}`}
               whileHover={{ color: '#C5A059' }}
               className="text-[10px] font-bold tracking-[0.2em] uppercase text-[var(--text-secondary)] hover:text-gold transition-colors"
             >
-              {t(`nav.${item.toLowerCase()}`)}
+              {t(`nav.${item.charAt(0).toLowerCase() + item.slice(1)}`)}
             </motion.a>
           ))}
           
@@ -82,14 +87,14 @@ export const Header: React.FC = () => {
             className="glass-card mt-4 overflow-hidden rounded-sm md:hidden"
           >
             <div className="flex flex-col p-8 gap-6">
-              {['Fleet', 'Services', 'Activities', 'Concierge', 'Contact'].map((item) => (
+              {['Services', 'Activities', 'HorseRiding', 'CarRental', 'Concierge', 'Contact'].map((item) => (
                 <a
                   key={item}
-                  href={`#${item.toLowerCase()}`}
+                  href={`#${item.replace(/([A-Z])/g, '-$1').toLowerCase().replace(/^-/, '')}`}
                   onClick={() => setIsMenuOpen(false)}
                   className="text-xs font-bold tracking-widest uppercase text-[var(--text-secondary)]"
                 >
-                  {t(`nav.${item.toLowerCase()}`)}
+                  {t(`nav.${item.charAt(0).toLowerCase() + item.slice(1)}`)}
                 </a>
               ))}
             </div>

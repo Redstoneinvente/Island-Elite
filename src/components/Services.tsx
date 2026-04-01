@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Plane, Map, Briefcase, Heart } from 'lucide-react';
+import { Plane, Map, Briefcase, Compass, Star } from 'lucide-react';
 import { SERVICES } from '../constants';
 import { useLocalization } from '../LocalizationContext';
 
@@ -8,7 +8,8 @@ const iconMap: Record<string, any> = {
   Plane,
   Map,
   Briefcase,
-  Heart,
+  Compass,
+  Star,
 };
 
 export const Services: React.FC = () => {
@@ -38,7 +39,7 @@ export const Services: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 gap-px bg-[var(--border-color)] border border-[var(--border-color)]">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 md:grid-cols-3">
             {SERVICES.map((service, index) => {
               const Icon = iconMap[service.icon];
               return (

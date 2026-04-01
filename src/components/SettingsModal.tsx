@@ -55,7 +55,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
                   </div>
                   <div>
                     <p className="text-alabaster font-medium">Guest User</p>
-                    <p className="text-xs text-gold/60 uppercase tracking-widest">Elite Member</p>
+                    <p className="text-xs text-gold/60 uppercase tracking-widest">Coco Moris Member</p>
                   </div>
                 </div>
 

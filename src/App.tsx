@@ -3,9 +3,10 @@ import { LocalizationProvider, useLocalization } from './LocalizationContext';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { BookingBar } from './components/BookingBar';
-import { FleetShowcase } from './components/FleetShowcase';
 import { Services } from './components/Services';
 import { Activities } from './components/Activities';
+import { HorseRiding } from './components/HorseRiding';
+import { CarRental } from './components/CarRental';
 import { Concierge } from './components/Concierge';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
@@ -20,9 +21,10 @@ function AppContent() {
       <main>
         <Hero greeting={greeting} />
         <BookingBar />
-        <FleetShowcase currency={currency} />
         <Services />
         <Activities />
+        <HorseRiding />
+        <CarRental />
         <Concierge />
         <Contact />
       </main>

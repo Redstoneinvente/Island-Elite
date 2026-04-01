@@ -8,12 +8,15 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-1 gap-16 md:grid-cols-4">
           {/* Brand */}
           <div className="col-span-1 md:col-span-2">
-            <span className="mb-8 block font-serif text-3xl font-bold tracking-widest text-gold">
-              ISLAND<span className="text-[var(--text-primary)]">ELITE</span>
-            </span>
+            <img 
+              src="/logo.png" 
+              alt="Coco Moris Logo" 
+              className="mb-8 h-16 w-auto object-contain"
+              referrerPolicy="no-referrer"
+            />
             <p className="mb-8 max-w-sm text-sm leading-relaxed text-[var(--text-secondary)]">
-              Defining luxury transportation in Mauritius. From private airport transfers to 
-              bespoke island tours and helicopter charters, we ensure your journey is as 
+              Defining luxury excursions in Mauritius. From private island tours to 
+              bespoke adventures and helicopter charters, we ensure your journey is as 
               extraordinary as your destination.
             </p>
             <div className="flex gap-6">
@@ -61,7 +64,7 @@ export const Footer: React.FC = () => {
 
         <div className="mt-20 flex flex-col items-center justify-between gap-8 border-t border-[var(--border-color)] pt-8 md:flex-row">
           <p className="text-[10px] tracking-widest uppercase text-[var(--text-secondary)] opacity-40">
-            © 2024 IslandElite Mauritius. All Rights Reserved.
+            © 2024 Coco Moris Mauritius. All Rights Reserved.
           </p>
           <div className="flex gap-8 text-[10px] tracking-widest uppercase text-[var(--text-secondary)] opacity-40">
             <a href="#" className="hover:text-[var(--text-primary)]">Privacy Policy</a>

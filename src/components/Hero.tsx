@@ -14,7 +14,7 @@ export const Hero: React.FC<HeroProps> = ({ greeting }) => {
       {/* Background Image */}
       <div className="absolute inset-0">
         <img 
-          src="https://images.unsplash.com/photo-1589519160732-57fc497e9880?auto=format&fit=crop&q=80&w=2000" 
+          src="/images/excursions/hero.png" 
           alt="Le Morne Mauritius" 
           className="h-full w-full object-cover"
           referrerPolicy="no-referrer"
@@ -40,7 +40,7 @@ export const Hero: React.FC<HeroProps> = ({ greeting }) => {
             transition={{ duration: 1, delay: 0.4 }}
             className="mb-8 font-serif text-5xl font-light tracking-tight text-alabaster md:text-8xl"
           >
-            {t('hero.title')} <span className="italic text-gold">Elite</span>
+            {t('hero.title')}
           </motion.h1>
           
           <motion.p

@@ -140,7 +140,7 @@ export const Dashboard: React.FC = () => {
             </div>
 
             <div className="glass-card p-8 rounded-sm border-gold/20">
-              <h3 className="font-serif text-xl text-gold mb-4 italic">Elite Status</h3>
+              <h3 className="font-serif text-xl text-gold mb-4 italic">Coco Moris Status</h3>
               <p className="text-sm text-alabaster/60 leading-relaxed mb-6">
                 You are currently a <span className="text-alabaster font-medium">Silver Member</span>. 
                 Complete 2 more journeys to unlock Gold benefits.

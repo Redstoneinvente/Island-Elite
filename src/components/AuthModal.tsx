@@ -65,7 +65,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
 
             <div className="mb-8 text-center">
               <h2 className="font-serif text-3xl text-alabaster mb-2">
-                {isLogin ? 'Welcome Back' : 'Join the Elite'}
+                {isLogin ? 'Welcome Back' : 'Join Coco Moris'}
               </h2>
               <p className="text-xs tracking-widest uppercase text-gold">
                 {isLogin ? 'Access your private dashboard' : 'Begin your luxury journey'}

@@ -71,19 +71,19 @@ export const BookingBar: React.FC = () => {
           </div>
         </div>
 
-        {/* Vehicle Class */}
+        {/* Excursion Type */}
         <div className="flex w-full flex-col gap-2 md:w-1/4">
           <label className="flex items-center gap-2 text-[10px] font-medium tracking-widest uppercase text-gold">
-            <Car size={12} /> Vehicle Class
+            <Car size={12} /> Excursion Type
           </label>
           <select 
             value={vehicleClass}
             onChange={(e) => setVehicleClass(e.target.value)}
             className="input-minimal w-full text-sm font-medium tracking-wide"
           >
-            <option value="First Class" className="bg-[var(--bg-primary)] text-[var(--text-primary)]">First Class</option>
-            <option value="Executive SUV" className="bg-[var(--bg-primary)] text-[var(--text-primary)]">Executive SUV</option>
-            <option value="Helicopter" className="bg-[var(--bg-primary)] text-[var(--text-primary)]">Helicopter</option>
+            <option value="Land Tour" className="bg-[var(--bg-primary)] text-[var(--text-primary)]">Land Tour</option>
+            <option value="Sea Adventure" className="bg-[var(--bg-primary)] text-[var(--text-primary)]">Sea Adventure</option>
+            <option value="Helicopter Tour" className="bg-[var(--bg-primary)] text-[var(--text-primary)]">Helicopter Tour</option>
           </select>
         </div>
 
