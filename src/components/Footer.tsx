@@ -9,7 +9,7 @@ export const Footer: React.FC = () => {
           {/* Brand */}
           <div className="col-span-1 md:col-span-2">
             <img 
-              src="/logo.png" 
+              src="/excursions/logo.png" 
               alt="Coco Moris Logo" 
               className="mb-8 h-16 w-auto object-contain"
               referrerPolicy="no-referrer"

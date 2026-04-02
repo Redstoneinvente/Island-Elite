@@ -19,7 +19,7 @@ export const Header: React.FC = () => {
           className="flex items-center gap-2"
         >
           <img 
-            src="./logo.png" 
+            src="/excursions/logo.png" 
             alt="Coco Moris Logo" 
             className="h-12 w-auto object-contain"
             referrerPolicy="no-referrer"
