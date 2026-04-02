@@ -14,7 +14,7 @@ export const Hero: React.FC<HeroProps> = ({ greeting }) => {
       {/* Background Image */}
       <div className="absolute inset-0">
         <img 
-          src="/images/excursions/hero.png" 
+          src="./hero-bg.png" 
           alt="Le Morne Mauritius" 
           className="h-full w-full object-cover"
           referrerPolicy="no-referrer"
