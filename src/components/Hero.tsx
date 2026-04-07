@@ -12,18 +12,21 @@ export const Hero: React.FC<HeroProps> = ({ greeting }) => {
   return (
     <section className="relative h-screen w-full overflow-hidden">
       {/* Background Image */}
-      <div className="absolute inset-0">
-        <img 
-          src="./excursions/hero-bg.png" 
-          alt="Le Morne Mauritius" 
-          className="h-full w-full object-cover"
-          referrerPolicy="no-referrer"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-obsidian/60 via-obsidian/40 to-obsidian" />
-      </div>
+<div className="absolute inset-0">
+  <iframe
+    src="https://player.vimeo.com/video/1180730087?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&loop=1&title=0&byline=0&portrait=0"
+    frameBorder="0"
+    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+    referrerPolicy="strict-origin-when-cross-origin"
+    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+    title="COCO MORIS Adventures"
+  />
+</div>
+
+<div className="absolute inset-0 bg-obsidian/50 z-0" />
 
       {/* Content */}
-      <div className="relative flex h-full items-center justify-center px-6 text-center">
+      <div className="relative flex h-full items-center justify-center px-6 text-center z-10">
         <div className="max-w-4xl">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
