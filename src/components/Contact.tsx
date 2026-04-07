@@ -29,7 +29,7 @@ export const Contact: React.FC = () => {
                 </div>
                 <div>
                   <p className="text-[10px] font-bold tracking-widest uppercase text-gold mb-1">Call Us</p>
-                  <p className="text-lg text-[var(--text-primary)]">+230 5555 0123</p>
+                  <p className="text-lg text-[var(--text-primary)]">+230 5795 9947</p>
                   <p className="text-xs text-[var(--text-secondary)]">Available 24/7 for urgent bookings</p>
                 </div>
               </div>
@@ -40,7 +40,7 @@ export const Contact: React.FC = () => {
                 </div>
                 <div>
                   <p className="text-[10px] font-bold tracking-widest uppercase text-gold mb-1">Email Us</p>
-                  <p className="text-lg text-[var(--text-primary)]">concierge@islandelite.mu</p>
+                  <p className="text-lg text-[var(--text-primary)]">cocomorisadventures@gmail.com</p>
                   <p className="text-xs text-[var(--text-secondary)]">Response within 2 hours</p>
                 </div>
               </div>

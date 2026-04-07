@@ -19,7 +19,7 @@ export const Hero: React.FC<HeroProps> = ({ greeting }) => {
     allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
     referrerPolicy="strict-origin-when-cross-origin"
     style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
-    title="COCO MORIS Adventures"
+    title="COCO MORIS ADVENTURES Adventures"
   />
 </div>
 

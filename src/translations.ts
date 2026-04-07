@@ -12,7 +12,7 @@ export const TRANSLATIONS: Record<Language, any> = {
       carRental: 'Car Rental',
     },
     hero: {
-      title: 'Coco Moris',
+      title: 'COCO MORIS ADVENTURES',
       subtitle: 'Bespoke Mauritius Excursions',
       cta: 'Plan the Best Excursion of Your Life',
     },
@@ -72,7 +72,7 @@ export const TRANSLATIONS: Record<Language, any> = {
       carRental: 'Location de Voiture',
     },
     hero: {
-      title: 'Coco Moris',
+      title: 'COCO MORIS ADVENTURES',
       subtitle: 'Excursions Sur Mesure à Maurice',
       cta: 'Planifiez la Meilleure Excursion de Votre Vie',
     },
@@ -132,7 +132,7 @@ export const TRANSLATIONS: Record<Language, any> = {
       carRental: 'Autovermietung',
     },
     hero: {
-      title: 'Coco Moris',
+      title: 'COCO MORIS ADVENTURES',
       subtitle: 'Maßgeschneiderte Mauritius-Exkursionen',
       cta: 'Planen Sie den besten Ausflug Ihres Lebens',
     },
@@ -192,7 +192,7 @@ export const TRANSLATIONS: Record<Language, any> = {
       carRental: 'Аренда Авто',
     },
     hero: {
-      title: 'Coco Moris',
+      title: 'COCO MORIS ADVENTURES',
       subtitle: 'Индивидуальные экскурсии на Маврикии',
       cta: 'Спланируйте лучшую экскурсию в своей жизни',
     },
@@ -252,7 +252,7 @@ export const TRANSLATIONS: Record<Language, any> = {
       carRental: '租车',
     },
     hero: {
-      title: 'Coco Moris',
+      title: 'COCO MORIS ADVENTURES',
       subtitle: '毛里求斯定制游',
       cta: '规划你一生中最好的远足',
     },
@@ -312,7 +312,7 @@ export const TRANSLATIONS: Record<Language, any> = {
       carRental: 'Noleggio Auto',
     },
     hero: {
-      title: 'Coco Moris',
+      title: 'COCO MORIS ADVENTURES',
       subtitle: 'Escursioni su Misura a Mauritius',
       cta: 'Pianifica la migliore escursione della tua vita',
     },
@@ -372,7 +372,7 @@ export const TRANSLATIONS: Record<Language, any> = {
       carRental: 'Alquiler de Coches',
     },
     hero: {
-      title: 'Coco Moris',
+      title: 'COCO MORIS ADVENTURES',
       subtitle: 'Excursiones a Medida en Mauricio',
       cta: 'Planifica la mejor excursión de tu vida',
     },

@@ -17,7 +17,7 @@ async function startServer() {
 
   // API routes
   app.get("/api/health", (req, res) => {
-    res.json({ status: "ok", greeting: "Welcome to Coco Moris API" });
+    res.json({ status: "ok", greeting: "Welcome to COCO MORIS ADVENTURES API" });
   });
 
   // Vite middleware for development
