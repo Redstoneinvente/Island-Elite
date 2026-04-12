@@ -28,7 +28,7 @@ export const Header: React.FC = () => {
 
         {/* Desktop Nav */}
         <nav className="hidden items-center gap-12 md:flex">
-          {['Services', 'Activities', 'CarRental', 'Concierge', 'Contact'].map((item) => (
+          {['Services', 'Activities', 'HorseRiding', 'CarRental', 'Contact'].map((item) => (
             <motion.a
               key={item}
               href={`#${item.replace(/([A-Z])/g, '-$1').toLowerCase().replace(/^-/, '')}`}
@@ -87,7 +87,7 @@ export const Header: React.FC = () => {
             className="glass-card mt-4 overflow-hidden rounded-sm md:hidden"
           >
             <div className="flex flex-col p-8 gap-6">
-              {['Services', 'Activities', 'CarRental', 'Concierge', 'Contact'].map((item) => (
+              {['Services', 'Activities', 'HorseRiding', 'CarRental', 'Contact'].map((item) => (
                 <a
                   key={item}
                   href={`#${item.replace(/([A-Z])/g, '-$1').toLowerCase().replace(/^-/, '')}`}

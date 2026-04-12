@@ -33,3 +33,21 @@ export function detectCurrency(): Currency {
   // In a real app, this would use an IP geolocation service
   return 'EUR'; 
 }
+
+export async function sendEmail(recipientEmail: string, emailTitle: string, emailMessage: string) {
+  const response = await fetch('/api/send-email', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ recipientEmail, emailTitle, emailMessage }),
+  });
+
+  const data = await response.json().catch(() => null);
+
+  if (!response.ok || !data?.success) {
+    throw new Error(data?.error || 'Unable to send email right now.');
+  }
+
+  return data;
+}

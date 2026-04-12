@@ -30,7 +30,7 @@ export const Footer: React.FC = () => {
           <div>
             <h4 className="mb-8 text-xs font-medium tracking-widest uppercase text-gold">Explore</h4>
             <ul className="flex flex-col gap-4">
-              {['Fleet', 'Services', 'Activities', 'Concierge', 'Contact'].map((item) => (
+              {['Fleet', 'Services', 'Activities', 'Contact'].map((item) => (
                 <li key={item}>
                   <a href={`#${item.toLowerCase()}`} className="text-sm text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)]">
                     {item}
@@ -46,7 +46,7 @@ export const Footer: React.FC = () => {
             <ul className="flex flex-col gap-6">
               <li className="flex items-start gap-4 text-sm text-[var(--text-secondary)]">
                 <MapPin size={18} className="shrink-0 text-gold" />
-                <span>Royal Road, Grand Baie,<br />Mauritius</span>
+                <span>Shining Lane, Mare d'Albert,<br />Mauritius</span>
               </li>
               <li className="flex items-center gap-4 text-sm text-[var(--text-secondary)]">
                 <Phone size={18} className="shrink-0 text-gold" />

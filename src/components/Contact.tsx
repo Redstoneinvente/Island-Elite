@@ -1,8 +1,43 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Send, Phone, Mail, MapPin } from 'lucide-react';
+import { sendEmail } from '../utils';
 
 export const Contact: React.FC = () => {
+  const [name, setName] = React.useState('');
+  const [email, setEmail] = React.useState('');
+  const [serviceInterest, setServiceInterest] = React.useState('Airport Transfer');
+  const [message, setMessage] = React.useState('');
+  const [status, setStatus] = React.useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async () => {
+    setStatus('sending');
+
+    try {
+      await sendEmail(
+        'cocomorisadventures@gmail.com',
+        `Website inquiry: ${serviceInterest}`,
+        [
+          'Hello,',
+          '',
+          `Name: ${name || 'Not provided'}`,
+          `Email: ${email || 'Not provided'}`,
+          `Service interest: ${serviceInterest}`,
+          '',
+          'Message:',
+          message || 'No message provided.',
+        ].join('\n')
+      );
+      setStatus('success');
+      setName('');
+      setEmail('');
+      setServiceInterest('Airport Transfer');
+      setMessage('');
+    } catch {
+      setStatus('error');
+    }
+  };
+
   return (
     <section id="contact" className="py-32 px-6 md:px-12 bg-[var(--bg-primary)] border-t border-[var(--border-color)]">
       <div className="mx-auto max-w-7xl">
@@ -51,7 +86,7 @@ export const Contact: React.FC = () => {
                 </div>
                 <div>
                   <p className="text-[10px] font-bold tracking-widest uppercase text-gold mb-1">Visit Us</p>
-                  <p className="text-lg text-[var(--text-primary)]">Royal Road, Grand Baie</p>
+                  <p className="text-lg text-[var(--text-primary)]">Shining Lane, Mare d'Albert</p>
                   <p className="text-xs text-[var(--text-secondary)]">Mauritius, Indian Ocean</p>
                 </div>
               </div>
@@ -69,32 +104,38 @@ export const Contact: React.FC = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="flex flex-col gap-2">
                   <label className="text-[10px] font-medium tracking-widest uppercase text-gold">Full Name</label>
-                  <input type="text" placeholder="John Doe" className="input-minimal" />
+                  <input type="text" placeholder="John Doe" className="input-minimal" value={name} onChange={(e) => setName(e.target.value)} />
                 </div>
                 <div className="flex flex-col gap-2">
                   <label className="text-[10px] font-medium tracking-widest uppercase text-gold">Email Address</label>
-                  <input type="email" placeholder="john@example.com" className="input-minimal" />
+                  <input type="email" placeholder="john@example.com" className="input-minimal" value={email} onChange={(e) => setEmail(e.target.value)} />
                 </div>
               </div>
 
               <div className="flex flex-col gap-2">
                 <label className="text-[10px] font-medium tracking-widest uppercase text-gold">Service Interest</label>
-                <select className="input-minimal">
+                <select className="input-minimal" value={serviceInterest} onChange={(e) => setServiceInterest(e.target.value)}>
                   <option className="bg-[var(--bg-primary)]">Airport Transfer</option>
                   <option className="bg-[var(--bg-primary)]">Private Island Tour</option>
                   <option className="bg-[var(--bg-primary)]">Helicopter Charter</option>
-                  <option className="bg-[var(--bg-primary)]">Concierge Request</option>
+                  <option className="bg-[var(--bg-primary)]">Beach Ride</option>
                 </select>
               </div>
 
               <div className="flex flex-col gap-2">
                 <label className="text-[10px] font-medium tracking-widest uppercase text-gold">Your Message</label>
-                <textarea rows={4} placeholder="Tell us about your requirements..." className="input-minimal resize-none" />
+                <textarea rows={4} placeholder="Tell us about your requirements..." className="input-minimal resize-none" value={message} onChange={(e) => setMessage(e.target.value)} />
               </div>
 
-              <button className="btn-premium w-full flex items-center justify-center gap-3">
-                Send Message <Send size={16} />
+              <button type="button" onClick={handleSubmit} disabled={status === 'sending'} className="btn-premium flex w-full items-center justify-center gap-3">
+                {status === 'sending' ? 'Sending...' : status === 'success' ? 'Message Sent' : <>Send Message <Send size={16} /></>}
               </button>
+
+              {status === 'error' && (
+                <p className="text-sm text-red-300">
+                  We couldn&apos;t send your message right now. Please try again shortly.
+                </p>
+              )}
             </form>
           </motion.div>
         </div>

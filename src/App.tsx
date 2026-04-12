@@ -5,8 +5,8 @@ import { Hero } from './components/Hero';
 import { BookingBar } from './components/BookingBar';
 import { Services } from './components/Services';
 import { Activities } from './components/Activities';
+import { HorseRiding } from './components/HorseRiding';
 import { CarRental } from './components/CarRental';
-import { Concierge } from './components/Concierge';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 
@@ -22,8 +22,8 @@ function AppContent() {
         <BookingBar />
         <Services />
         <Activities />
+        <HorseRiding />
         <CarRental />
-        <Concierge />
         <Contact />
       </main>
 

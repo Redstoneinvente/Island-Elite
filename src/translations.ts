@@ -8,13 +8,13 @@ export const TRANSLATIONS: Record<Language, any> = {
       concierge: 'Concierge',
       contact: 'Contact',
       account: 'Account',
-      horseRiding: 'Horse Riding',
+      horseRiding: 'Beach Ride',
       carRental: 'Car Rental',
     },
     hero: {
       title: 'COCO MORIS ADVENTURES',
       subtitle: 'Bespoke Mauritius Excursions',
-      cta: 'Plan the Best Excursion of Your Life',
+      cta: 'Book your airport transfer',
     },
     booking: {
       pickup: 'Starting Point',
@@ -50,8 +50,8 @@ export const TRANSLATIONS: Record<Language, any> = {
       explore: 'Plan Your Visit',
     },
     horseRiding: {
-      title: 'Horse Riding Adventures',
-      subtitle: 'Experience Mauritius on Horseback',
+      title: 'Beach Ride Adventures',
+      subtitle: 'Experience Mauritius Along the Shore',
       book: 'Book a Ride',
     },
     carRental: {
@@ -68,7 +68,7 @@ export const TRANSLATIONS: Record<Language, any> = {
       concierge: 'Concierge',
       contact: 'Contact',
       account: 'Compte',
-      horseRiding: 'Équitation',
+      horseRiding: 'Balade Plage',
       carRental: 'Location de Voiture',
     },
     hero: {
@@ -110,8 +110,8 @@ export const TRANSLATIONS: Record<Language, any> = {
       explore: 'Planifier Votre Visite',
     },
     horseRiding: {
-      title: 'Aventures Équestres',
-      subtitle: 'Découvrez Maurice à Cheval',
+      title: 'Balades à Cheval sur la Plage',
+      subtitle: 'Découvrez Maurice le long du littoral',
       book: 'Réserver une Balade',
     },
     carRental: {
@@ -128,7 +128,7 @@ export const TRANSLATIONS: Record<Language, any> = {
       concierge: 'Concierge',
       contact: 'Kontakt',
       account: 'Konto',
-      horseRiding: 'Reiten',
+      horseRiding: 'Strandritt',
       carRental: 'Autovermietung',
     },
     hero: {
@@ -170,8 +170,8 @@ export const TRANSLATIONS: Record<Language, any> = {
       explore: 'Planen Sie Ihren Besuch',
     },
     horseRiding: {
-      title: 'Reitabenteuer',
-      subtitle: 'Erleben Sie Mauritius zu Pferd',
+      title: 'Strandritt-Abenteuer',
+      subtitle: 'Erleben Sie Mauritius entlang der Kueste',
       book: 'Ritt Buchen',
     },
     carRental: {
@@ -188,7 +188,7 @@ export const TRANSLATIONS: Record<Language, any> = {
       concierge: 'Консьерж',
       contact: 'Контакт',
       account: 'Аккаунт',
-      horseRiding: 'Верховая Езда',
+      horseRiding: 'Пляжная Прогулка',
       carRental: 'Аренда Авто',
     },
     hero: {
@@ -230,8 +230,8 @@ export const TRANSLATIONS: Record<Language, any> = {
       explore: 'Запланируйте свой визит',
     },
     horseRiding: {
-      title: 'Приключения Верхом',
-      subtitle: 'Познайте Маврикий Верхом на Лошади',
+      title: 'Пляжные Конные Прогулки',
+      subtitle: 'Откройте Маврикий вдоль побережья верхом',
       book: 'Забронировать Поездку',
     },
     carRental: {
@@ -248,7 +248,7 @@ export const TRANSLATIONS: Record<Language, any> = {
       concierge: '礼宾',
       contact: '联系',
       account: '账户',
-      horseRiding: '骑马',
+      horseRiding: '海滩骑行',
       carRental: '租车',
     },
     hero: {
@@ -290,8 +290,8 @@ export const TRANSLATIONS: Record<Language, any> = {
       explore: '计划您的访问',
     },
     horseRiding: {
-      title: '骑马探险',
-      subtitle: '在马背上体验毛里求斯',
+      title: '海滩骑行体验',
+      subtitle: '沿着海岸线感受毛里求斯',
       book: '预订骑行',
     },
     carRental: {
@@ -308,7 +308,7 @@ export const TRANSLATIONS: Record<Language, any> = {
       concierge: 'Concierge',
       contact: 'Contatto',
       account: 'Account',
-      horseRiding: 'Equitazione',
+      horseRiding: 'Passeggiata in Spiaggia',
       carRental: 'Noleggio Auto',
     },
     hero: {
@@ -350,8 +350,8 @@ export const TRANSLATIONS: Record<Language, any> = {
       explore: 'Pianifica la Tua Visita',
     },
     horseRiding: {
-      title: 'Avventure a Cavallo',
-      subtitle: 'Vivi Mauritius a Cavallo',
+      title: 'Passeggiate a Cavallo in Spiaggia',
+      subtitle: 'Scopri Mauritius lungo la costa',
       book: 'Prenota una Passeggiata',
     },
     carRental: {
@@ -368,7 +368,7 @@ export const TRANSLATIONS: Record<Language, any> = {
       concierge: 'Conserje',
       contact: 'Contacto',
       account: 'Cuenta',
-      horseRiding: 'Equitación',
+      horseRiding: 'Paseo en la Playa',
       carRental: 'Alquiler de Coches',
     },
     hero: {
@@ -410,8 +410,8 @@ export const TRANSLATIONS: Record<Language, any> = {
       explore: 'Planifica Tu Visita',
     },
     horseRiding: {
-      title: 'Aventuras a Caballo',
-      subtitle: 'Vive Mauricio a Caballo',
+      title: 'Paseos a Caballo por la Playa',
+      subtitle: 'Descubre Mauricio a lo largo de la costa',
       book: 'Reservar un Paseo',
     },
     carRental: {

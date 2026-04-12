@@ -5,6 +5,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { motion } from 'motion/react';
 import { LOCATIONS } from '../constants';
 import { useLocalization } from '../LocalizationContext';
+import { sendEmail } from '../utils';
 
 export const BookingBar: React.FC = () => {
   const { t } = useLocalization();
@@ -12,6 +13,40 @@ export const BookingBar: React.FC = () => {
   const [dropoff, setDropoff] = React.useState('');
   const [date, setDate] = React.useState<Date | null>(new Date());
   const [vehicleClass, setVehicleClass] = React.useState('First Class');
+  const [contactDetails, setContactDetails] = React.useState('');
+  const [status, setStatus] = React.useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+
+  const handleTransferBooking = async () => {
+    if (!contactDetails.trim()) {
+      setStatus('error');
+      return;
+    }
+
+    setStatus('sending');
+
+    try {
+      await sendEmail(
+        'cocomorisadventures@gmail.com',
+        'Airport transfer booking',
+        [
+          'Hello,',
+          '',
+          'I would like to book an airport transfer.',
+          '',
+          `Starting point: ${pickup}`,
+          `Destination: ${dropoff || 'Not selected'}`,
+          `Date and time: ${date ? date.toLocaleString() : 'Not selected'}`,
+          `Transfer type: ${vehicleClass}`,
+          `Contact details: ${contactDetails}`,
+          '',
+          'Please contact me back to confirm.',
+        ].join('\n')
+      );
+      setStatus('success');
+    } catch {
+      setStatus('error');
+    }
+  };
 
   return (
     <div className="relative z-20 mx-auto -mt-24 w-full max-w-7xl px-6 md:px-12">
@@ -23,7 +58,7 @@ export const BookingBar: React.FC = () => {
         className="glass-card flex flex-col items-center gap-8 p-8 md:flex-row md:p-12"
       >
         {/* Pickup */}
-        <div className="flex w-full flex-col gap-2 md:w-1/4">
+        <div className="flex w-full flex-col gap-2 md:w-1/5">
           <label className="flex items-center gap-2 text-[10px] font-medium tracking-widest uppercase text-gold">
             <MapPin size={12} /> {t('booking.pickup')}
           </label>
@@ -39,7 +74,7 @@ export const BookingBar: React.FC = () => {
         </div>
 
         {/* Dropoff */}
-        <div className="flex w-full flex-col gap-2 md:w-1/4">
+        <div className="flex w-full flex-col gap-2 md:w-1/5">
           <label className="flex items-center gap-2 text-[10px] font-medium tracking-widest uppercase text-gold">
             <MapPin size={12} /> {t('booking.dropoff')}
           </label>
@@ -56,7 +91,7 @@ export const BookingBar: React.FC = () => {
         </div>
 
         {/* Date */}
-        <div className="flex w-full flex-col gap-2 md:w-1/4">
+        <div className="flex w-full flex-col gap-2 md:w-1/5">
           <label className="flex items-center gap-2 text-[10px] font-medium tracking-widest uppercase text-gold">
             <Calendar size={12} /> {t('booking.date')} & {t('booking.time')}
           </label>
@@ -72,27 +107,48 @@ export const BookingBar: React.FC = () => {
         </div>
 
         {/* Excursion Type */}
-        <div className="flex w-full flex-col gap-2 md:w-1/4">
+        <div className="flex w-full flex-col gap-2 md:w-1/5">
           <label className="flex items-center gap-2 text-[10px] font-medium tracking-widest uppercase text-gold">
-            <Car size={12} /> Excursion Type
+            <Car size={12} /> Transfer Type
           </label>
           <select 
             value={vehicleClass}
             onChange={(e) => setVehicleClass(e.target.value)}
             className="input-minimal w-full text-sm font-medium tracking-wide"
           >
-            <option value="Land Tour" className="bg-[var(--bg-primary)] text-[var(--text-primary)]">Land Tour</option>
-            <option value="Sea Adventure" className="bg-[var(--bg-primary)] text-[var(--text-primary)]">Sea Adventure</option>
-            <option value="Helicopter Tour" className="bg-[var(--bg-primary)] text-[var(--text-primary)]">Helicopter Tour</option>
+            <option value="Standard Transfer" className="bg-[var(--bg-primary)] text-[var(--text-primary)]">Standard Transfer</option>
+            <option value="Private Premium Transfer" className="bg-[var(--bg-primary)] text-[var(--text-primary)]">Private Premium Transfer</option>
+            <option value="Group Transfer" className="bg-[var(--bg-primary)] text-[var(--text-primary)]">Group Transfer</option>
           </select>
+        </div>
+
+        <div className="flex w-full flex-col gap-2 md:w-1/5">
+          <label className="flex items-center gap-2 text-[10px] font-medium tracking-widest uppercase text-gold">
+            <Users size={12} /> Contact Details
+          </label>
+          <input
+            type="text"
+            value={contactDetails}
+            onChange={(e) => setContactDetails(e.target.value)}
+            placeholder="Phone or email"
+            className="input-minimal w-full text-sm font-medium tracking-wide"
+          />
         </div>
 
         {/* Search Button */}
         <div className="w-full md:w-auto">
-          <button className="btn-premium w-full md:w-auto">
-            {t('hero.cta')}
+          <button type="button" onClick={handleTransferBooking} disabled={status === 'sending'} className="btn-premium w-full md:w-auto">
+            {status === 'sending' ? 'Sending...' : status === 'success' ? 'Request Sent' : t('hero.cta')}
           </button>
         </div>
+
+        {status === 'error' && (
+          <p className="w-full text-center text-xs tracking-wide text-red-300 md:text-left">
+            {contactDetails.trim()
+              ? 'We couldn&apos;t send your transfer request right now. Please try again.'
+              : 'Please add your phone number or email so we can contact you back.'}
+          </p>
+        )}
       </motion.div>
     </div>
   );
