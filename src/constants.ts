@@ -90,7 +90,7 @@ export const CAR_RENTAL: Car[] = [
     name: 'Suzuki Swift',
     category: 'Economy',
     transmission: 'Automatic',
-    image: './excursions/suzukiSwift.png',
+    image: '/cars/car1.png',
     pricePerDay: {
       MUR: 1800,
       EUR: 38,
@@ -99,11 +99,11 @@ export const CAR_RENTAL: Car[] = [
     description: 'Compact and fuel-efficient, perfect for navigating the island\'s coastal roads.',
   },
   {
-    id: 'kia-sportage',
-    name: 'Kia Sportage',
+    id: 'Suzuki-Ertiga',
+    name: 'Suzuki Ertiga',
     category: 'SUV',
     transmission: 'Automatic',
-    image: './excursions/kiaSportage.png',
+    image: '/cars/car2.png',
     pricePerDay: {
       MUR: 3200,
       EUR: 68,

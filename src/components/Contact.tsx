@@ -9,9 +9,11 @@ export const Contact: React.FC = () => {
   const [serviceInterest, setServiceInterest] = React.useState('Airport Transfer');
   const [message, setMessage] = React.useState('');
   const [status, setStatus] = React.useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = React.useState('');
 
   const handleSubmit = async () => {
     setStatus('sending');
+    setErrorMessage('');
 
     try {
       await sendEmail(
@@ -33,7 +35,8 @@ export const Contact: React.FC = () => {
       setEmail('');
       setServiceInterest('Airport Transfer');
       setMessage('');
-    } catch {
+    } catch (error) {
+      setErrorMessage(error instanceof Error ? error.message : 'We couldn\'t send your message right now. Please try again shortly.');
       setStatus('error');
     }
   };
@@ -133,7 +136,7 @@ export const Contact: React.FC = () => {
 
               {status === 'error' && (
                 <p className="text-sm text-red-300">
-                  We couldn&apos;t send your message right now. Please try again shortly.
+                  {errorMessage || 'We couldn&apos;t send your message right now. Please try again shortly.'}
                 </p>
               )}
             </form>

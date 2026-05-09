@@ -15,14 +15,17 @@ export const BookingBar: React.FC = () => {
   const [vehicleClass, setVehicleClass] = React.useState('First Class');
   const [contactDetails, setContactDetails] = React.useState('');
   const [status, setStatus] = React.useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = React.useState('');
 
   const handleTransferBooking = async () => {
     if (!contactDetails.trim()) {
+      setErrorMessage('Please add your phone number or email so we can contact you back.');
       setStatus('error');
       return;
     }
 
     setStatus('sending');
+    setErrorMessage('');
 
     try {
       await sendEmail(
@@ -43,7 +46,8 @@ export const BookingBar: React.FC = () => {
         ].join('\n')
       );
       setStatus('success');
-    } catch {
+    } catch (error) {
+      setErrorMessage(error instanceof Error ? error.message : 'We couldn\'t send your transfer request right now. Please try again.');
       setStatus('error');
     }
   };
@@ -144,9 +148,7 @@ export const BookingBar: React.FC = () => {
 
         {status === 'error' && (
           <p className="w-full text-center text-xs tracking-wide text-red-300 md:text-left">
-            {contactDetails.trim()
-              ? 'We couldn&apos;t send your transfer request right now. Please try again.'
-              : 'Please add your phone number or email so we can contact you back.'}
+            {errorMessage}
           </p>
         )}
       </motion.div>

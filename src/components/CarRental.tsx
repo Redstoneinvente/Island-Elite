@@ -1,12 +1,11 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Settings, Users, Briefcase, ArrowRight } from 'lucide-react';
+import { Settings, Users, Briefcase } from 'lucide-react';
 import { CAR_RENTAL } from '../constants';
 import { useLocalization } from '../LocalizationContext';
-import { formatPrice } from '../utils';
 
 export const CarRental: React.FC = () => {
-  const { t, currency } = useLocalization();
+  const { t } = useLocalization();
 
   return (
     <section id="car-rental" className="py-32 px-6 md:px-12 bg-[var(--bg-secondary)] text-[var(--text-primary)]">
@@ -73,25 +72,10 @@ export const CarRental: React.FC = () => {
                 <h3 className="mb-4 font-serif text-2xl font-medium tracking-wide text-[var(--text-primary)]">
                   {car.name}
                 </h3>
-                
+
                 <p className="mb-8 text-sm leading-relaxed text-[var(--text-secondary)]">
                   {car.description}
                 </p>
-
-                <div className="mt-auto flex items-center justify-between border-t border-[var(--border-color)] pt-8">
-                  <div className="flex flex-col">
-                    <span className="text-[10px] uppercase tracking-tighter text-[var(--text-secondary)] opacity-60">
-                      {t('carRental.perDay')}
-                    </span>
-                    <span className="text-xl font-light text-gold">
-                      {formatPrice(car.pricePerDay[currency] || 0, currency)}
-                    </span>
-                  </div>
-                  
-                  <button className="flex items-center gap-2 text-[10px] font-bold tracking-widest uppercase text-[var(--text-primary)] transition-all hover:gap-3">
-                    {t('carRental.book')} <ArrowRight size={14} className="text-gold" />
-                  </button>
-                </div>
               </div>
             </motion.div>
           ))}

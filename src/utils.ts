@@ -1,6 +1,8 @@
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
-import { Currency, Language } from './types';
+import { Currency } from './types';
+
+const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL || '').replace(/\/$/, '');
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -23,30 +25,51 @@ export function formatPrice(amount: number, currency: Currency): string {
     RUB: '₽',
     CNY: '¥',
   };
-  
+
   const symbol = symbols[currency] || currency;
   return `${symbol} ${amount.toLocaleString()}`;
 }
 
-// Mock IP detection for currency
 export function detectCurrency(): Currency {
-  // In a real app, this would use an IP geolocation service
-  return 'EUR'; 
+  return 'EUR';
 }
 
-export async function sendEmail(recipientEmail: string, emailTitle: string, emailMessage: string) {
-  const response = await fetch('/api/send-email', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ recipientEmail, emailTitle, emailMessage }),
-  });
+function getApiUrl(path: string): string {
+  if (API_BASE_URL) {
+    return `${API_BASE_URL}${path}`;
+  }
+
+  return path;
+}
+
+export async function sendEmail(
+  recipientEmail: string,
+  emailTitle: string,
+  emailMessage: string,
+) {
+  let response: Response;
+
+  try {
+    response = await fetch(getApiUrl('/api/send-email'), {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ recipientEmail, emailTitle, emailMessage }),
+    });
+  } catch {
+    throw new Error(
+      API_BASE_URL
+        ? `The email API at ${API_BASE_URL} is unreachable.`
+        : 'The email API is unreachable. In development, make sure `npm run dev:server` is running on port 3000.',
+    );
+  }
 
   const data = await response.json().catch(() => null);
 
   if (!response.ok || !data?.success) {
-    throw new Error(data?.error || 'Unable to send email right now.');
+    const details = typeof data?.details === 'string' ? data.details : '';
+    throw new Error(data?.error || details || 'Unable to send email right now.');
   }
 
   return data;

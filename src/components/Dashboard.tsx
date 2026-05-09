@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { motion } from 'motion/react';
 import { useAuth } from '../AuthContext';
 import { Booking } from '../types';
@@ -99,7 +100,7 @@ export const Dashboard: React.FC = () => {
                           <Car size={16} className="text-gold shrink-0 mt-1" />
                           <div>
                             <p className="text-[10px] uppercase tracking-widest text-alabaster/40 mb-1">Vehicle</p>
-                            <p className="text-sm text-alabaster">{booking.vehicle_class}</p>
+                            <p className="text-sm text-alabaster">{booking.vehicleId}</p>
                           </div>
                         </div>
                       </div>
@@ -108,7 +109,7 @@ export const Dashboard: React.FC = () => {
                     <div className="flex flex-col justify-between items-end">
                       <div className="text-right">
                         <p className="text-[10px] uppercase tracking-widest text-alabaster/40 mb-1">Total Paid</p>
-                        <p className="font-serif text-2xl text-gold">{formatPrice(booking.price, booking.currency as any)}</p>
+                        <p className="font-serif text-2xl text-gold">{formatPrice(booking.totalPrice, booking.currency)}</p>
                       </div>
                       <button className="text-[10px] font-bold uppercase tracking-widest text-gold hover:underline">
                         View Details
@@ -155,6 +156,3 @@ export const Dashboard: React.FC = () => {
     </div>
   );
 };
-
-// Need to import useEffect
-import { useEffect } from 'react';

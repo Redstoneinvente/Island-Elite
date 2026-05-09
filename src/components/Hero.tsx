@@ -11,6 +11,7 @@ export const Hero: React.FC<HeroProps> = ({ greeting }) => {
   const { t } = useLocalization();
   const [showVideo, setShowVideo] = React.useState(false);
   const [status, setStatus] = React.useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = React.useState('');
 
   React.useEffect(() => {
     const timer = window.setTimeout(() => setShowVideo(true), 1200);
@@ -19,6 +20,7 @@ export const Hero: React.FC<HeroProps> = ({ greeting }) => {
 
   const handleTransferInquiry = async () => {
     setStatus('sending');
+    setErrorMessage('');
 
     try {
       await sendEmail(
@@ -33,7 +35,8 @@ export const Hero: React.FC<HeroProps> = ({ greeting }) => {
         ].join('\n')
       );
       setStatus('success');
-    } catch {
+    } catch (error) {
+      setErrorMessage(error instanceof Error ? error.message : 'We couldn\'t send the request right now. Please try again in a moment.');
       setStatus('error');
     }
   };
@@ -105,7 +108,7 @@ export const Hero: React.FC<HeroProps> = ({ greeting }) => {
 
           {status === 'error' && (
             <p className="mt-4 text-xs tracking-wide text-red-300">
-              We couldn&apos;t send the request right now. Please try again in a moment.
+              {errorMessage}
             </p>
           )}
         </div>
