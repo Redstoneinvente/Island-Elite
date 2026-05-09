@@ -6,6 +6,7 @@ import { BookingBar } from './components/BookingBar';
 import { Services } from './components/Services';
 import { Activities } from './components/Activities';
 import { HorseRiding } from './components/HorseRiding';
+import { QuadBiking } from './components/QuadBiking';
 import { CarRental } from './components/CarRental';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
@@ -23,6 +24,7 @@ function AppContent() {
         <Services />
         <Activities />
         <HorseRiding />
+        <QuadBiking />
         <CarRental />
         <Contact />
       </main>
