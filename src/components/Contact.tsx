@@ -1,44 +1,27 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Send, Phone, Mail, MapPin } from 'lucide-react';
-import { sendEmail } from '../utils';
+import { MessageCircle, Phone, Mail, MapPin } from 'lucide-react';
+import { openWhatsApp } from '../utils';
 
 export const Contact: React.FC = () => {
   const [name, setName] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [serviceInterest, setServiceInterest] = React.useState('Airport Transfer');
   const [message, setMessage] = React.useState('');
-  const [status, setStatus] = React.useState<'idle' | 'sending' | 'success' | 'error'>('idle');
-  const [errorMessage, setErrorMessage] = React.useState('');
 
-  const handleSubmit = async () => {
-    setStatus('sending');
-    setErrorMessage('');
-
-    try {
-      await sendEmail(
-        'cocomorisadventures@gmail.com',
-        `Website inquiry: ${serviceInterest}`,
-        [
-          'Hello,',
-          '',
-          `Name: ${name || 'Not provided'}`,
-          `Email: ${email || 'Not provided'}`,
-          `Service interest: ${serviceInterest}`,
-          '',
-          'Message:',
-          message || 'No message provided.',
-        ].join('\n')
-      );
-      setStatus('success');
-      setName('');
-      setEmail('');
-      setServiceInterest('Airport Transfer');
-      setMessage('');
-    } catch (error) {
-      setErrorMessage(error instanceof Error ? error.message : 'We couldn\'t send your message right now. Please try again shortly.');
-      setStatus('error');
-    }
+  const handleContactClick = () => {
+    openWhatsApp([
+      'Hello COCO MORIS ADVENTURES,',
+      '',
+      'I would like to plan my Mauritius journey.',
+      '',
+      `Name: ${name || 'Not provided'}`,
+      `Email: ${email || 'Not provided'}`,
+      `Service interest: ${serviceInterest}`,
+      '',
+      'Message:',
+      message || 'No message provided.',
+    ].join('\n'));
   };
 
   return (
@@ -130,15 +113,9 @@ export const Contact: React.FC = () => {
                 <textarea rows={4} placeholder="Tell us about your requirements..." className="input-minimal resize-none" value={message} onChange={(e) => setMessage(e.target.value)} />
               </div>
 
-              <button type="button" onClick={handleSubmit} disabled={status === 'sending'} className="btn-premium flex w-full items-center justify-center gap-3">
-                {status === 'sending' ? 'Sending...' : status === 'success' ? 'Message Sent' : <>Send Message <Send size={16} /></>}
+              <button type="button" onClick={handleContactClick} className="btn-premium flex w-full items-center justify-center gap-3">
+                Contact Me <MessageCircle size={16} />
               </button>
-
-              {status === 'error' && (
-                <p className="text-sm text-red-300">
-                  {errorMessage || 'We couldn&apos;t send your message right now. Please try again shortly.'}
-                </p>
-              )}
             </form>
           </motion.div>
         </div>

@@ -1,7 +1,8 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Ship, Map, Utensils, CalendarDays, Send } from 'lucide-react';
+import { Ship, Map, Utensils, CalendarDays, MessageCircle } from 'lucide-react';
 import { useAuth } from '../AuthContext';
+import { openWhatsApp } from '../utils';
 
 const SERVICES = [
   {
@@ -34,19 +35,19 @@ export const ConciergeSection: React.FC = () => {
   const { user } = useAuth();
   const [selectedService, setSelectedService] = React.useState(SERVICES[0].title);
   const [message, setMessage] = React.useState('');
-  const [status, setStatus] = React.useState<'idle' | 'sending' | 'success'>('idle');
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus('sending');
-    await fetch('/api/concierge/inquiry', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ serviceType: selectedService, message }),
-    });
-    setStatus('success');
-    setMessage('');
-    setTimeout(() => setStatus('idle'), 3000);
+    openWhatsApp([
+      'Hello COCO MORIS ADVENTURES,',
+      '',
+      'I would like to inquire about a concierge service.',
+      '',
+      `Service type: ${selectedService}`,
+      '',
+      'Message:',
+      message || 'No message provided.',
+    ].join('\n'));
   };
 
   return (
@@ -119,14 +120,9 @@ export const ConciergeSection: React.FC = () => {
 
               <button 
                 type="submit" 
-                disabled={status === 'sending'}
                 className="btn-premium flex items-center justify-center gap-2"
               >
-                {status === 'sending' ? 'Sending...' : status === 'success' ? 'Inquiry Sent' : (
-                  <>
-                    Send Inquiry <Send size={14} />
-                  </>
-                )}
+                Contact Me <MessageCircle size={14} />
               </button>
 
               {!user && (

@@ -5,7 +5,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { motion } from 'motion/react';
 import { LOCATIONS } from '../constants';
 import { useLocalization } from '../LocalizationContext';
-import { sendEmail } from '../utils';
+import { openWhatsApp } from '../utils';
 
 export const BookingBar: React.FC = () => {
   const { t } = useLocalization();
@@ -14,42 +14,28 @@ export const BookingBar: React.FC = () => {
   const [date, setDate] = React.useState<Date | null>(new Date());
   const [vehicleClass, setVehicleClass] = React.useState('First Class');
   const [contactDetails, setContactDetails] = React.useState('');
-  const [status, setStatus] = React.useState<'idle' | 'sending' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = React.useState('');
 
-  const handleTransferBooking = async () => {
+  const handleTransferBooking = () => {
     if (!contactDetails.trim()) {
       setErrorMessage('Please add your phone number or email so we can contact you back.');
-      setStatus('error');
       return;
     }
 
-    setStatus('sending');
     setErrorMessage('');
-
-    try {
-      await sendEmail(
-        'cocomorisadventures@gmail.com',
-        'Airport transfer booking',
-        [
-          'Hello,',
-          '',
-          'I would like to book an airport transfer.',
-          '',
-          `Starting point: ${pickup}`,
-          `Destination: ${dropoff || 'Not selected'}`,
-          `Date and time: ${date ? date.toLocaleString() : 'Not selected'}`,
-          `Transfer type: ${vehicleClass}`,
-          `Contact details: ${contactDetails}`,
-          '',
-          'Please contact me back to confirm.',
-        ].join('\n')
-      );
-      setStatus('success');
-    } catch (error) {
-      setErrorMessage(error instanceof Error ? error.message : 'We couldn\'t send your transfer request right now. Please try again.');
-      setStatus('error');
-    }
+    openWhatsApp([
+      'Hello COCO MORIS ADVENTURES,',
+      '',
+      'I would like to book an airport transfer.',
+      '',
+      `Starting point: ${pickup}`,
+      `Destination: ${dropoff || 'Not selected'}`,
+      `Date and time: ${date ? date.toLocaleString() : 'Not selected'}`,
+      `Transfer type: ${vehicleClass}`,
+      `Contact details: ${contactDetails}`,
+      '',
+      'Please contact me back to confirm.',
+    ].join('\n'));
   };
 
   return (
@@ -141,12 +127,12 @@ export const BookingBar: React.FC = () => {
 
         {/* Search Button */}
         <div className="w-full md:w-auto">
-          <button type="button" onClick={handleTransferBooking} disabled={status === 'sending'} className="btn-premium w-full md:w-auto">
-            {status === 'sending' ? 'Sending...' : status === 'success' ? 'Request Sent' : t('hero.cta')}
+          <button type="button" onClick={handleTransferBooking} className="btn-premium w-full md:w-auto">
+            Contact Me
           </button>
         </div>
 
-        {status === 'error' && (
+        {errorMessage && (
           <p className="w-full text-center text-xs tracking-wide text-red-300 md:text-left">
             {errorMessage}
           </p>

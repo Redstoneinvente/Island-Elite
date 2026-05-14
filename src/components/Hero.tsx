@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { useLocalization } from '../LocalizationContext';
-import { sendEmail } from '../utils';
+import { openWhatsApp } from '../utils';
 
 interface HeroProps {
   greeting: string;
@@ -10,35 +10,20 @@ interface HeroProps {
 export const Hero: React.FC<HeroProps> = ({ greeting }) => {
   const { t } = useLocalization();
   const [showVideo, setShowVideo] = React.useState(false);
-  const [status, setStatus] = React.useState<'idle' | 'sending' | 'success' | 'error'>('idle');
-  const [errorMessage, setErrorMessage] = React.useState('');
 
   React.useEffect(() => {
     const timer = window.setTimeout(() => setShowVideo(true), 1200);
     return () => window.clearTimeout(timer);
   }, []);
 
-  const handleTransferInquiry = async () => {
-    setStatus('sending');
-    setErrorMessage('');
-
-    try {
-      await sendEmail(
-        'cocomorisadventures@gmail.com',
-        'Airport transfer request',
-        [
-          'Hello,',
-          '',
-          'A visitor clicked the airport transfer CTA on the website.',
-          '',
-          'Please follow up with them to collect their transfer details.',
-        ].join('\n')
-      );
-      setStatus('success');
-    } catch (error) {
-      setErrorMessage(error instanceof Error ? error.message : 'We couldn\'t send the request right now. Please try again in a moment.');
-      setStatus('error');
-    }
+  const handleTransferInquiry = () => {
+    openWhatsApp([
+      'Hello COCO MORIS ADVENTURES,',
+      '',
+      'I would like to book an airport transfer.',
+      '',
+      'Please contact me to confirm the details.',
+    ].join('\n'));
   };
 
   return (
@@ -101,16 +86,10 @@ export const Hero: React.FC<HeroProps> = ({ greeting }) => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
-            <button type="button" onClick={handleTransferInquiry} disabled={status === 'sending'} className="btn-premium">
-              {status === 'sending' ? 'Sending...' : status === 'success' ? 'Request Sent' : t('hero.cta')}
+            <button type="button" onClick={handleTransferInquiry} className="btn-premium">
+              Contact Me
             </button>
           </motion.div>
-
-          {status === 'error' && (
-            <p className="mt-4 text-xs tracking-wide text-red-300">
-              {errorMessage}
-            </p>
-          )}
         </div>
       </div>
     </section>
